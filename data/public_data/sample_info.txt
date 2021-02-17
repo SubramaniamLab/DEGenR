@@ -1,0 +1,27 @@
+sample	condition
+Counts CL-1	CL
+Counts CL-2	CL
+Counts CL-3	CL
+Counts CL-4	CL
+Counts CL-5	CL
+Counts CL-6	CL
+Counts CL-7	CL
+Counts CL-8	CL
+Counts CL-9	CL
+Counts CL-10	CL
+Counts HP-1	HP
+Counts HP-2	HP
+Counts HP-3	HP
+Counts HP-4	HP
+Counts HP-5	HP
+Counts HP-6	HP
+Counts HP-7	HP
+Counts HP-8	HP
+Counts HP-9	HP
+Counts HP-10	HP
+Counts UL-2	UL
+Counts UL-3	UL
+Counts UL-4	UL
+Counts UL-5	UL
+Counts UL-6	UL
+
