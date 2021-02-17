@@ -1,0 +1,58 @@
+ /* primary header box color*/
+ .box.box-solid.box-primary>.box-header {
+  background: #009999;
+  color: #ffffff;
+   font-weight: bold;
+   font-size: 24px;
+} 
+
+/* primary header box color*/
+.box-header h3.box-title {  
+   font-weight: bold;
+   font-size: 24px;
+   font-family: OpenSans;
+}
+
+.skin-blue .main-header .logo {
+  font-family: "Roboto","Georgia", Times, "Times New Roman", serif;
+  font-weight: bold;
+  font-size: 24px;
+  /*background-color: #666633;*/
+}
+
+/*.skin-blue .main-header .navbar {
+ background-color: #666633;
+  background-color: blue;
+ } */
+/*file input and para*/
+/* .box.box-solid.box-primary{ 
+  font-family: OpenSans;
+  font-size: 16px;
+  text-align: left;
+  color: #000000;
+} */
+
+ 
+
+.skin-blue .sidebar-menu > li.active > a,
+.skin-blue .sidebar-menu > li:hover > a {
+  border-left-color: #ff0000;
+  
+}
+
+.skin-blue .main-sidebar {
+          background-color: gray;}
+
+		
+h4 {
+	font-weight: bold;
+  color: blue;
+  font-size: 20px;
+}
+
+label {
+	font-size: 18px;
+}
+
+        
+
