@@ -394,7 +394,7 @@ dt1
                               # levels = colnames(design))
 	contr <- makeContrasts(contrasts=con2vscon1, levels = colnames(design))
 	}else if (input$uploadGEO) {
-	
+	group= geovisualize()$groups
 	design <- model.matrix(~group + 0, geovisualize()$geovalues2)
 	colnames(design) <- levels(geovisualize()$gs)
 	   
@@ -459,7 +459,7 @@ dt1
 voomreactive <- eventReactive(input$degAnalysis,{
 if (input$uploadGEO)
 {
-
+group=geovisualize()$groups
 design <- model.matrix(~group + 0, geovisualize()$geovalues2)
 colnames(design) <- levels(geovisualize()$gs)
 fit <- lmFit(geovisualize()$geovalues2, design) 
@@ -816,16 +816,17 @@ return(idx)
 
  
 #### datatable of CAMERA method
-camera_out <- reactive({
-if (input$pathwayenrichment)
+camera_out <- eventReactive(input$pathwayenrichment,{
 
 withProgress(message = '', value = 0,{
 	incProgress(.5, detail = paste("Enrichment analysis"))
 	if (input$uploadGEO){
+	group=geovisualize()$groups
  design <- model.matrix(~group + 0, geovisualize()$geovalues2)
 colnames(design) <- levels(geovisualize()$gs)
 cam.HsGO.1 <- camera(geovisualize()$ex,msigdbgeneset(),design,contrast=contrastmatrix())
   }else if (input$uploadSRP){
+  group= factor(sampleTableSRP()$group)
   design <- model.matrix(~0+group, data = sampleTableSRP()$sampleTable1)
 	colnames(design) <- levels(sampleTableSRP()$group)
 	cam.HsGO.1 <- camera(voomrun(),msigdbgeneset(),design,contrast=contrastmatrix())}

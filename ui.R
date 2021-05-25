@@ -89,8 +89,7 @@ body <- dashboardBody(
             h2("Introduction"),
 			p("We developed DEGenR, an interactive web interface that provides integrated tools for 
   performing differential gene expression, rank-based ontological geneset and pathway enrichment analysis, 
-  and transcription factor regulatory analysis from user-uploaded raw RNA-seq fastq files or 
-  read counts as well as microarray and sequencing datasets available at the NCBI Gene Expression Omnibus 
+  and transcription factor regulatory analysis from user-uploaded raw read counts as well as microarray and sequencing datasets available at the NCBI Gene Expression Omnibus 
   (GEO) and Sequencing Read Archive (SRA)."),
   h3("Data Upload", style="padding-left: 1em"),
   h4("Data from recount2"),
@@ -104,7 +103,7 @@ Nellore A, Collado-Torres L, Jaffe AE, Alquicira-Hernández J, Wilks C, Pritt J,
 h4("Data from GEO"),
 p("The Gene Expression Omnibus (GEO) housed at NCBI is repository of gene expression data, including 
 numerous human microarray gene expression studies. This step uses the R package GEOquery to download 
-the expression data and metadata for a user-selected human microarray study. Search for datasets to 
+the expression data and metadata for a user-selected microarray study. Search for datasets to 
 analyze at https://www.ncbi.nlm.nih.gov/geo/. Only those datatsets having matrix file can be analyzed."),
 h4("Count Data Upload"),
 p("Users are required to upload two files."),
