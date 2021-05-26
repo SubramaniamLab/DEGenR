@@ -8,4 +8,6 @@ Be sure to set the environment where you extract the folder. e.g. you downloaded
 
 ##then run
 library(shiny)
+
+
 runApp("DEGenR")
