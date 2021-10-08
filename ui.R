@@ -674,7 +674,7 @@ tabItem(tabName="fgsea",
 					 
 	tabItem(tabName="enrichrontology",
 	fluidRow(
-				box(title = "TF enrichment using Enrichr",
+				box(title = "Ontology enrichment using Enrichr",
                          width = NULL,
                          solidHeader = T, status = "primary",  
                     box(title = "Filter criteria",
@@ -704,7 +704,10 @@ tabItem(tabName="fgsea",
 				  textInput(inputId="FC4", 
                                            label=HTML("log<sub>2</sub>FC or confect (topConfects) cutoff"), 
                                            value="0.5"),
-										   
+					textInput(inputId="pvalenrichonto",
+					label="P value cutoff", 
+                                           value="0.05"
+					),					   
 						actionButton(inputId="runenrichrOntology", label="Run enrichr Ontology", icon("paper-plane"), 
     style="color: #fff; background-color: #337ab7; border-color: #2e6da4")
 	),			 
@@ -802,6 +805,10 @@ tabItem(tabName="fgsea",
 						textInput(inputId="FC3", 
                                            label=HTML("log<sub>2</sub>FC or confect (topConfects) cutoff"), 
                                            value="0.5"),
+                                           textInput(inputId="pvalenrichTF",
+					label="P value cutoff", 
+                                           value="0.05"
+					),
 										   
 						actionButton(inputId="runenrichr", label="Run enrichr", icon("paper-plane"), 
     style="color: #fff; background-color: #337ab7; border-color: #2e6da4")

@@ -6,7 +6,7 @@ server <- function(input, output,session){
 
 ##### data input
 dataInput <- reactiveValues(
-	dataCount = read.delim(paste(getwd(),"/data/public_data/raw_counts.csv",sep="/"), header=T, row.names=1),
+	dataCount = read.delim(paste(getwd(),"/data/public_data/raw_counts.csv",sep="/"), header=T, row.names=1,check.names=T),
 	dataMeta = read.delim(paste(getwd(),"/data/public_data/sample_info.txt",sep="/"), header=T) 
     )
 
@@ -14,16 +14,16 @@ myValues <- eventReactive(input$upload, {
 	withProgress(message = 'Submit:', value = 0,{
 	incProgress(.1, detail = paste("Uploading dataset"))
     if (is.null(input$countFile) & is.null(input$metaTab) ) {
-      dataInput$dataCount <- read.delim(paste(getwd(),"/data/public_data/raw_counts.csv",sep="/"), header=T, sep=",", row.names=1)
+      dataInput$dataCount <- read.delim(paste(getwd(),"/data/public_data/raw_counts.csv",sep="/"), header=T, sep=",", row.names=1,check.names=T)
       dataInput$dataMeta <- read.delim(paste(getwd(),"/data/public_data/sample_info.txt",sep=""), header=T, sep="\t")
     } else if (!is.null(input$countFile) & is.null(input$metaTab) ) {
-      dataInput$dataCount <- read.delim(paste(getwd(),"/data/public_data/raw_counts.csv",sep="/"), header=T, sep=",", row.names=1)
+      dataInput$dataCount <- read.delim(paste(getwd(),"/data/public_data/raw_counts.csv",sep="/"), header=T, sep=",", row.names=1,check.names=T)
       dataInput$dataMeta <- NULL
     } else if (is.null(input$countFile) & !is.null(input$metaTab) ) {
       dataInput$dataCount <- NULL
       dataInput$dataMeta <- read.delim(paste(getwd(),"/data/public_data/sample_info.txt",sep=""), header=T, sep="\t")
     } else if (!is.null(input$countFile) & !is.null(input$metaTab)) {
-      dataInput$dataCount <- read.delim(input$countFile$datapath, header=T,sep=',', row.names=1)
+      dataInput$dataCount <- read.delim(input$countFile$datapath, header=T,sep=',', row.names=1,check.names=T)
       dataInput$dataMeta <- read.delim(input$metaTab$datapath, sep='\t',header=T)
     }   
     list(meta=(dataInput$dataMeta), count=(dataInput$dataCount) )
@@ -1159,8 +1159,8 @@ withProgress(message = '', value = 0,{
 	incProgress(.5, detail = paste("running enrichr"))
 res_limma <- genesreactive()
 if (input$genes == "eBayes_tvalue" | input$genes == "TREAT_tvalue"){
-res_limma_down <- res_limma[which(res_limma$logFC < -as.numeric(input$FC3)), ]
-res_limma_up <- res_limma[which(res_limma$logFC > input$FC3), ]	
+res_limma_down <- res_limma[which(res_limma$logFC < -as.numeric(input$FC3) & res_limma$P.Value < input$pvalenrichTF), ]
+res_limma_up <- res_limma[which(res_limma$logFC > input$FC3 & res_limma$P.Value < input$pvalenrichTF), ]	
 }else if (input$genes == "topConfects")
 {
 res_limma_down <- res_limma[which(res_limma$confect < -as.numeric(input$FC3)), ]
@@ -1352,8 +1352,8 @@ withProgress(message = '', value = 0,{
 	incProgress(.5, detail = paste("running enrichr"))
 res_limma <- genesreactiveenrichr()
 if (input$genesenrichr == "eBayes_tvalue" | input$genesenrichr == "TREAT_tvalue" ){
-res_limma_down <- res_limma[which(res_limma$logFC < -as.numeric(input$FC4)), ]
-res_limma_up <- res_limma[which(res_limma$logFC > input$FC4), ]	
+res_limma_down <- res_limma[which(res_limma$logFC < -as.numeric(input$FC4) & res_limma$P.Value < input$pvalenrichonto), ]
+res_limma_up <- res_limma[which(res_limma$logFC > input$FC4 & res_limma$P.Value < input$pvalenrichonto), ]	
 }else if (input$genesenrichr == "topConfects")
 {
 res_limma_down <- res_limma[which(res_limma$confect < -as.numeric(input$FC4)), ]
